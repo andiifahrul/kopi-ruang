@@ -1,0 +1,226 @@
+/* Import Google Fonts untuk Kopi Ruang */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+/* Variabel Warna */
+:root {
+  --kopi-forest: #0f2622;  
+  --kopi-creamy: #d1b997;  
+  --kopi-sand: #e8dcca;    
+  --kopi-burnt: #4a382c;   
+}
+*
+{ margin: 0;
+   padding: 0; }
+
+/* Atur lebar offcanvas khusus untuk desktop (layar >= 992px) */
+/* Memastikan offcanvas tidak mengacaukan layout utama */
+.offcanvas {
+  z-index: 1050 !important;
+}
+
+@media (min-width: 992px) {
+  /* Opsional: memberi bayangan agar lebih estetik di desktop */
+  .offcanvas.offcanvas-end {
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+}
+/* Mengaplikasikan Font ke Body dan Headings */
+body {
+  font-family: 'Inter', sans-serif, 'Poppins'; /*  */
+  background-color: var(--kopi-sand);
+  color: var(--kopi-forest);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif; /*  */
+  color: var(--kopi-forest);
+}
+
+/* Helper Class untuk digunakan di komponen Bootstrap nantinya */
+.text-creamy { color: var(--kopi-creamy); }
+.bg-forest { background-color: var(--kopi-forest); color: white; }
+.btn-kopi { background-color: var(--kopi-burnt); color: white; border: none; }
+.btn-kopi:hover { background-color: #5c473a; color: white; }
+
+
+.hero-section {
+  min-height: 80vh; /* Membuat tinggi section minimal 80% layar */
+  padding: 80px 0;
+}
+
+.hero-section {
+  background: linear-gradient(rgba(15, 38, 34, 0.85), rgba(15, 38, 34, 0.85)), url('./assets/bghero.jpg'); 
+   background-size: cover;
+  background-position: center;
+}
+
+.btn-forest {
+  background-color: var(--kopi-forest);
+  color: #f8f4ed;
+  border-radius: 50px;
+}
+
+.btn-outline-forest {
+  border: 1px solid var(--kopi-forest);
+  color: var(--kopi-forest);
+  border-radius: 50px;
+}
+
+.btn-outline-forest:hover {
+  background-color: var(--kopi-forest);
+  color: #f8f4ed;
+}
+
+/* Memastikan kartu rapi */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background-color: var(--kopi-forest);
+  color: var(--kopi-creamy);
+  transition: all 0.3s;
+}
+
+.sidebar.toggled {
+  margin-left: -250px;
+}
+
+          /* halaman admin */
+  /* Memperbesar ikon menu saat sidebar collapsed */
+.admin-sidebar.collapsed .nav-link svg {
+  font-size: 1.5rem !important; /* Ukuran ikon jadi lebih besar */
+  margin-right: 0; /* Biar ikon berada di tengah */
+  transition: all 0.3s ease;
+}
+
+/* Penyesuaian agar ikon menu tetap rapi saat collapsed */
+.admin-sidebar.collapsed .nav-link {
+  justify-content: center; /* Memastikan ikon di tengah */
+  padding: 15px 0;
+}
+
+/* Memperbesar ikon logo/header saat collapsed */
+.admin-sidebar.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Membuat logo di kiri, tombol di kanan */
+  padding: 15px;
+  height: 60px;
+  overflow: hidden;
+  white-space: nowrap; /* Mencegah teks turun ke bawah */
+}
+
+/* Ukuran default ikon */
+.sidebar-header button svg {
+  font-size: 1.2rem; 
+  transition: all 0.3s ease;
+}
+
+.admin-wrapper {
+  display: flex;
+  height: 100vh; /* Tinggi penuh layar */
+  width: 100vw;  /* Lebar penuh layar */
+  overflow: hidden; /* Mencegah scrollbar ganda */
+}
+
+/* 2. Sidebar: Berikan lebar tetap agar tidak menekan main-content */
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--kopi-forest);
+  color: white;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar.collapsed {
+  width: 70px; /* Lebar saat mengecil */
+}
+
+/* 3. Main Content: KUNCI UTAMA */
+/* 'flex: 1' memerintahkan area ini untuk mengisi SISA RUANG yang ada */
+.main-content {
+  flex: 1; 
+  overflow-y: auto; /* Agar area konten bisa di-scroll jika isinya panjang */
+  background-color: var(--kopi-sand);
+}
+
+/* Estetika: Logo & Spacing */
+.sidebar-logo {
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--kopi-creamy);
+  white-space: nowrap;
+}
+
+/* Estetika: Nav Link & Status Aktif */
+.nav-link {
+  color: var(--kopi-creamy) !important;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  margin: 5px 10px;
+  border-radius: 10px; /* Radius untuk kesan rounded */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: var(--kopi-burnt);
+  color: white !important;
+}
+
+/* Estetika: Footer Profile */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 15px;
+  border-top: 1px solid var(--kopi-burnt);
+  text-align: center;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background-color: var(--kopi-creamy);
+}
+
+.admin-sidebar.collapsed .nav-text, 
+.admin-sidebar.collapsed .sidebar-logo,
+.admin-sidebar.collapsed .profile-name {
+  display: none !important;
+}
+
+*/pesanan*/
+.badge {
+  padding: 0.5em 0.8em;
+  border-radius: 50rem; /* Efek pill */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+}
+
+/* Mempercantik baris tabel */
+.table td, .table th {
+  padding: 1rem;
+}
